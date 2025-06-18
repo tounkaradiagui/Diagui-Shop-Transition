@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
+    "@hookform/resolvers": "^5.1.1",
     "@react-native-masked-view/masked-view": "0.3.2",
     "@react-navigation/bottom-tabs": "^7.3.15",
     "@react-navigation/drawer": "^7.4.2",
@@ -17,17 +18,21 @@
     "@react-navigation/native-stack": "^7.3.15",
     "@react-navigation/stack": "^7.3.4",
     "expo": "~53.0.11",
+    "expo-router": "^5.1.0",
     "expo-status-bar": "~2.2.3",
     "react": "19.0.0",
+    "react-hook-form": "^7.58.1",
     "react-native": "0.79.3",
     "react-native-gesture-handler": "~2.24.0",
     "react-native-navigation": "^7.48.0",
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "5.4.0",
-    "react-native-screens": "~4.11.1"
+    "react-native-screens": "~4.11.1",
+    "zod": "^3.25.67"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "babel-plugin-module-resolver": "^5.0.2"
   },
   "private": true
 }

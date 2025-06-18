@@ -11,7 +11,7 @@ const AppNav = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName="Welcome"
+                initialRouteName="Login"
                 screenOptions={{ headerShown: false }}
             >
                 <Stack.Screen name="Welcome" component={Welcome} />
