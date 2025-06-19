@@ -1,6 +1,5 @@
-import React from 'react';
-import { TextInput, StyleSheet, View, Text } from 'react-native';
-import { Controller } from 'react-hook-form';
+import { TextInput, StyleSheet, View, Text } from "react-native";
+import { Controller } from "react-hook-form";
 
 export default function CustomInput({
   control,
@@ -10,18 +9,29 @@ export default function CustomInput({
   keyboardType,
   autoFocus,
   autoComplete,
+  inputRef,
+  onSubmitEditing,
+  blurOnSubmit,
+  returnKeyType,
   autoCapitalize = "none",
 }) {
   return (
     <Controller
       control={control}
       name={name}
-      render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
+      render={({
+        field: { onChange, onBlur, value },
+        fieldState: { error },
+      }) => (
         <View style={styles.inputContainer}>
           <TextInput
             style={[styles.input, error && styles.inputError]}
             onChangeText={onChange}
             onBlur={onBlur}
+            ref={inputRef}
+            onSubmitEditing={onSubmitEditing}
+            blurOnSubmit={blurOnSubmit}
+            returnKeyType={returnKeyType}
             value={value}
             placeholder={placeholder}
             secureTextEntry={secureTextEntry}

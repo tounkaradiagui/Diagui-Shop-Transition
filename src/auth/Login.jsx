@@ -14,7 +14,7 @@ import GoogleSignIn from "@/components/GoogleSignIn";
 import Divider from "@/components/Divider";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRef } from "react";
 
 // 🔐 Schéma de validation avec Zod
 const signInSchema = z.object({
@@ -30,11 +30,13 @@ const signInSchema = z.object({
     }),
 });
 
-
 const Login = () => {
   const navigation = useNavigation();
 
-   const {
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+
+  const {
     control,
     handleSubmit,
     setError,
@@ -43,19 +45,7 @@ const Login = () => {
     resolver: zodResolver(signInSchema),
   });
 
-    console.log("Form Values", JSON.stringify(errors, null, 2));
-
-  // const {
-  //   control,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm({
-  //   defaultValues: {
-  //     name: "",
-  //     email: "",
-  //     password: "",
-  //   },
-  // });
+  console.log("Form Values", JSON.stringify(errors, null, 2));
 
   const onSubmit = (data) => console.log(data);
 
@@ -73,12 +63,18 @@ const Login = () => {
           autoFocus
           keyboardType="email-address"
           autoComplete="email"
+          inputRef={emailRef}
+          returnKeyType="next"
+          blurOnSubmit={false}
+          onSubmitEditing={() => passwordRef.current?.focus()}
         />
         <CustomInput
           control={control}
           name="password"
           placeholder="Mot de passe"
           secureTextEntry
+          inputRef={passwordRef}
+          returnKeyType="done"
         />
         {errors.root && (
           <Text style={{ color: "red", marginTop: 5 }}>
@@ -94,7 +90,7 @@ const Login = () => {
         Mot de passe oublié ?
       </Text>
 
-      <CustomButton title="Connexion" onPress={() => handleSubmit()} />
+      <CustomButton title="Connexion" onPress={handleSubmit(onSubmit)} />
 
       <Text>
         <Text style={styles.text}>Vous n'avez pas de compte ? </Text>
