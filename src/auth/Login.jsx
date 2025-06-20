@@ -15,6 +15,7 @@ import Divider from "@/components/Divider";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef } from "react";
+import { useAuth } from "@/providers/AuthProvider";
 
 // 🔐 Schéma de validation avec Zod
 const signInSchema = z.object({
@@ -47,7 +48,18 @@ const Login = () => {
 
   console.log("Form Values", JSON.stringify(errors, null, 2));
 
-  const onSubmit = (data) => console.log(data);
+  const {signIn, isAuthenticated} = useAuth();
+  
+  if(isAuthenticated) {
+    return (
+      navigation.navigate("Welcome")
+    )
+  }
+
+  const onSubmit = (data) => {
+    signIn();
+    console.log(data);
+  }
 
   return (
     <KeyboardAvoidingView
