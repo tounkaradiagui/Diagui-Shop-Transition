@@ -4,6 +4,7 @@ import Login from "../auth/Login";
 import SignUp from "../auth/SignUp";
 import Welcome from "../screens/Welcome";
 import DrawerNav from "./DrawerNav"; // ✅ point important
+import Verify from "../auth/Verify";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ const AppNav = () => {
                 <Stack.Screen name="Welcome" component={Welcome} />
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="SignUp" component={SignUp} />
+                <Stack.Screen name="Verify" component={Verify} />
                 <Stack.Screen name="Home" component={DrawerNav} />
             </Stack.Navigator>
         </NavigationContainer>
